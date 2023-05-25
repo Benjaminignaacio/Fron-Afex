@@ -59,7 +59,7 @@ const modalVideo = ref(null);
 
 
 async function cargarVideos() {
-  const response = await axios.get('http://localhost:3000/videos');
+  const response = await axios.get('http://ec2-18-224-67-191.us-east-2.compute.amazonaws.com:3000/videos');
   videoList.value = response.data;
 }
 function validarCampos() {
@@ -83,7 +83,7 @@ async function agregarVideo() {
     const videoInfo = await obtenerInfoVideo(videoId);
     console.log(videoInfo);
   
-    const response = await axios.post('http://localhost:3000/videos', videoInfo);
+    const response = await axios.post('http://ec2-18-224-67-191.us-east-2.compute.amazonaws.com:3000/videos', videoInfo);
     /* const response = await axios.post('http://localhost:3000/videos',  { 
       id: "Si3gjswSPmQ", 
       title: "Inevitable", 
@@ -128,7 +128,7 @@ async function eliminarVideo(videoId) {
   });
 
   if (confirmacion.isConfirmed) {
-    await axios.delete(`http://localhost:3000/videos/${videoId}`);
+    await axios.delete(`http://ec2-18-224-67-191.us-east-2.compute.amazonaws.com:3000/videos/${videoId}`);
     videoList.value = videoList.value.filter(video => video.id !== videoId);
   }
 }
